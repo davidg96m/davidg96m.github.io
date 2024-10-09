@@ -134,18 +134,19 @@
 
 <script>
     window.onload = function() {
+        document.getElementById('smokeEffect').classList.remove('hidden');
+        
         setTimeout(() => {
+            // Mostrar el texto introductorio después de 2 segundos
             document.getElementById('introText').classList.remove('hidden');
             setTimeout(() => {
+                // Mostrar las puertas después de 3 segundos desde que se muestra el texto introductorio
                 document.getElementById('introText').classList.add('hidden');
-                document.getElementById('smokeEffect').classList.remove('hidden');
-                setTimeout(() => {
-                    document.getElementById('smokeEffect').style.opacity = '0';
-                    document.getElementById('doorContainer').classList.remove('hidden');
-                    document.getElementById('doorContainer').style.opacity = '1';
-                }, 2000); // Tiempo para el humo
-            }, 2000); // Tiempo para el texto introductorio
-        }, 2000); // Tiempo para mostrar "Bienvenido"
+                document.getElementById('smokeEffect').classList.add('hidden');
+                document.getElementById('doorContainer').classList.remove('hidden');
+                document.getElementById('doorContainer').style.opacity = '1';
+            }, 3000); // Tiempo para el texto introductorio
+        }, 2000); // Tiempo para mostrar el texto introductorio
     };
     
     function openDoor(button, message, imageUrl) {
@@ -168,6 +169,9 @@
                 optionDiv.style.display = 'block'; // Mostrar el mensaje de la opción ganada
                 optionDiv.style.position = 'absolute'; // Asegurarse de que el mensaje esté en la posición correcta
                 optionDiv.style.bottom = '0'; // Alinear el mensaje al fondo de la puerta
+
+                // Ocultar el botón de selección
+                button.style.display = 'none'; 
             }
         });
         document.querySelector('.door-container').style.justifyContent = 'center'; // Centrar la puerta seleccionada
